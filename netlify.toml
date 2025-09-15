@@ -12,12 +12,6 @@
   directory = ".netlify/functions"
   node_bundler = "esbuild"
 
-# Increase timeout for serverless functions
-[[functions]]
-  path = "/api/*"
-  included_files = ["src/**"]
-  timeout = 30
-
 # Headers for better performance
 [[headers]]
   for = "/_next/static/*"
