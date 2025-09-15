@@ -1,0 +1,667 @@
+{
+  "Monday": {
+    "title": "Chest and Triceps",
+    "exercises": [
+      {
+        "name": "Bench Press",
+        "sets": 3,
+        "reps": "8-10",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 10,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Overhead Press",
+        "sets": 3,
+        "reps": "8-12",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 8,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Incline Dumbbell Press",
+        "sets": 3,
+        "reps": "10-12",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 10,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Lateral Raises",
+        "sets": 3,
+        "reps": "12-15",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 15,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 12,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Tricep Dips",
+        "sets": 3,
+        "reps": "8-12",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 8,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  "Tuesday": {
+    "title": "Lower Body Power",
+    "exercises": [
+      {
+        "name": "Squats",
+        "sets": 4,
+        "reps": "8-10",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 4,
+            "reps": 8,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Romanian Deadlifts",
+        "sets": 3,
+        "reps": "8-12",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 8,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Bulgarian Split Squats",
+        "sets": 3,
+        "reps": "10-12 each",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 10,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Calf Raises",
+        "sets": 4,
+        "reps": "15-20",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 20,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 15,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 15,
+            "completed": false
+          },
+          {
+            "setNumber": 4,
+            "reps": 15,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Plank",
+        "sets": 3,
+        "reps": "30-60 sec",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 60,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 45,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 30,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  "Wednesday": {
+    "title": "Back & Biceps",
+    "exercises": [
+      {
+        "name": "Pull-ups/Assisted Pull-ups",
+        "sets": 4,
+        "reps": "6-10",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 4,
+            "reps": 8,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Bent-over Rows",
+        "sets": 3,
+        "reps": "8-12",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 10,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 10,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Lat Pulldowns",
+        "sets": 3,
+        "reps": "10-12",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 12,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Bicep Curls",
+        "sets": 3,
+        "reps": "12-15",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 12,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Hammer Curls",
+        "sets": 3,
+        "reps": "12-15",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 12,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  "Thursday": {
+    "title": "Cardio & Core",
+    "exercises": [
+      {
+        "name": "Burpees",
+        "sets": 4,
+        "reps": "10-15",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 4,
+            "reps": 12,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Mountain Climbers",
+        "sets": 3,
+        "reps": "20-30 each",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 25,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 25,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 25,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Russian Twists",
+        "sets": 3,
+        "reps": "20 each side",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 20,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 20,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 20,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Leg Raises",
+        "sets": 3,
+        "reps": "12-15",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 12,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "High Knees",
+        "sets": 3,
+        "reps": "30-45 sec",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 30,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 30,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 30,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  "Friday": {
+    "title": "Full Body Strength",
+    "exercises": [
+      {
+        "name": "Deadlifts",
+        "sets": 4,
+        "reps": "5-8",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 6,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 6,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 6,
+            "completed": false
+          },
+          {
+            "setNumber": 4,
+            "reps": 6,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Push Press",
+        "sets": 3,
+        "reps": "6-10",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 8,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Goblet Squats",
+        "sets": 3,
+        "reps": "12-15",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 12,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 12,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Renegade Rows",
+        "sets": 3,
+        "reps": "8-10 each",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 8,
+            "completed": false
+          },
+          {
+            "setNumber": 3,
+            "reps": 8,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Turkish Get-ups",
+        "sets": 2,
+        "reps": "3-5 each",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 3,
+            "completed": false
+          },
+          {
+            "setNumber": 2,
+            "reps": 3,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  "Saturday": {
+    "title": "Active Recovery",
+    "exercises": [
+      {
+        "name": "Yoga Flow",
+        "sets": 1,
+        "reps": "20-30 min",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 25,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Walking",
+        "sets": 1,
+        "reps": "30-45 min",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 30,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Stretching",
+        "sets": 1,
+        "reps": "15-20 min",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 15,
+            "completed": false
+          }
+        ]
+      },
+      {
+        "name": "Foam Rolling",
+        "sets": 1,
+        "reps": "10-15 min",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 10,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  },
+  "Sunday": {
+    "title": "Rest Day",
+    "exercises": [
+      {
+        "name": "Rest",
+        "sets": 1,
+        "reps": "All day",
+        "defaultSets": [
+          {
+            "setNumber": 1,
+            "reps": 1,
+            "completed": false
+          }
+        ]
+      }
+    ]
+  }
+}
