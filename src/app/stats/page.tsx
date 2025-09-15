@@ -50,7 +50,7 @@ export default function StatsPage() {
   const router = useRouter();
   const [stats, setStats] = useState<WorkoutStats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [_error, setError] = useState('');
 
   // Redirect to sign up if not authenticated
   useEffect(() => {
@@ -101,12 +101,12 @@ export default function StatsPage() {
     );
   }
 
-  if (error) {
+  if (_error) {
     return (
       <Container maxWidth="lg">
         <AppHeader title="Lifetime Stats"  />
         <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
+          {_error}
         </Alert>
         <Button onClick={() => router.push('/')} startIcon={<ArrowBack />}>
           Back to Home
@@ -239,7 +239,7 @@ export default function StatsPage() {
                   cx="50%"
                   cy="50%"
                   labelLine={false}
-                  label={({ name, percent }: any) => `${name} ${(percent * 100).toFixed(0)}%`}
+                  label={(props: any) => `${props.name} ${(props.percent * 100).toFixed(0)}%`}
                   outerRadius={80}
                   fill="#8884d8"
                   dataKey="totalSets"

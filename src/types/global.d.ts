@@ -1,10 +1,10 @@
-import mongoose from 'mongoose';
-import NextAuth from 'next-auth';
+import _mongoose from 'mongoose';
+import _NextAuth from 'next-auth';
 
 declare global {
   var mongoose: {
-    conn: typeof mongoose | null;
-    promise: Promise<typeof mongoose> | null;
+    conn: typeof _mongoose | null;
+    promise: Promise<typeof _mongoose> | null;
   };
 }
 

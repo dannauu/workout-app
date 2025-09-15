@@ -32,7 +32,7 @@ export default function ProfilePage() {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState('');
+  const [_error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
   // Redirect to sign up if not authenticated
@@ -121,12 +121,12 @@ export default function ProfilePage() {
     );
   }
 
-  if (error && !profile) {
+  if (_error && !profile) {
     return (
       <Container maxWidth="md">
         <AppHeader title="Profile"  />
         <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
+          {_error}
         </Alert>
         <Button onClick={() => router.push('/')} variant="contained">
           Back to Home
@@ -153,9 +153,9 @@ export default function ProfilePage() {
     <Container maxWidth="md">
       <AppHeader title="Profile" subtitle="Manage your personal details"  />
 
-      {error && (
+      {_error && (
         <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
+          {_error}
         </Alert>
       )}
 

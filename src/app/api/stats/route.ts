@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]/route';
 import connectDB from '@/lib/mongodb';
-import User from '@/models/User';
+import User, { IWorkoutDay, IWorkoutSet } from '@/models/User';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
@@ -21,11 +21,11 @@ export async function GET(request: NextRequest) {
 
     // Calculate statistics
     const totalWorkouts = user.workouts.length;
-    const totalSetsCompleted = user.workouts.reduce((total: number, workout: any) => {
+    const totalSetsCompleted = user.workouts.reduce((total: number, workout: IWorkoutDay) => {
       return total + (workout.totalSetsCompleted || 0);
     }, 0);
 
-    const totalSetsPlanned = user.workouts.reduce((total: number, workout: any) => {
+    const totalSetsPlanned = user.workouts.reduce((total: number, workout: IWorkoutDay) => {
       return total + (workout.totalSetsPlanned || 0);
     }, 0);
 
@@ -44,12 +44,12 @@ export async function GET(request: NextRequest) {
       weekEnd.setDate(weekStart.getDate() + 6);
       weekEnd.setHours(23, 59, 59, 999);
 
-      const weekWorkouts = user.workouts.filter((workout: any) => {
+      const weekWorkouts = user.workouts.filter((workout: IWorkoutDay) => {
         const workoutDate = new Date(workout.date);
         return workoutDate >= weekStart && workoutDate <= weekEnd;
       });
 
-      const weekSetsCompleted = weekWorkouts.reduce((total: number, workout: any) => {
+      const weekSetsCompleted = weekWorkouts.reduce((total: number, workout: IWorkoutDay) => {
         return total + (workout.totalSetsCompleted || 0);
       }, 0);
 
@@ -62,8 +62,8 @@ export async function GET(request: NextRequest) {
 
     // Generate exercise data
     const exerciseMap = new Map();
-    user.workouts.forEach((workout: any) => {
-      workout.exercises?.forEach((exercise: any) => {
+    user.workouts.forEach((workout: IWorkoutDay) => {
+      workout.exercises?.forEach((exercise: { name: string; sets: IWorkoutSet[] }) => {
         const exerciseName = exercise.name;
         if (!exerciseMap.has(exerciseName)) {
           exerciseMap.set(exerciseName, {
@@ -74,7 +74,7 @@ export async function GET(request: NextRequest) {
         }
         
         const exerciseData = exerciseMap.get(exerciseName);
-        exercise.sets?.forEach((set: any) => {
+        exercise.sets?.forEach((set: IWorkoutSet) => {
           exerciseData.totalSets++;
           if (set.completed) {
             exerciseData.completedSets++;
@@ -96,12 +96,12 @@ export async function GET(request: NextRequest) {
       const monthEnd = new Date(today.getFullYear(), today.getMonth() - i + 1, 0);
       monthEnd.setHours(23, 59, 59, 999);
 
-      const monthWorkouts = user.workouts.filter((workout: any) => {
+      const monthWorkouts = user.workouts.filter((workout: IWorkoutDay) => {
         const workoutDate = new Date(workout.date);
         return workoutDate >= monthStart && workoutDate <= monthEnd;
       });
 
-      const monthSetsCompleted = monthWorkouts.reduce((total: number, workout: any) => {
+      const monthSetsCompleted = monthWorkouts.reduce((total: number, workout: IWorkoutDay) => {
         return total + (workout.totalSetsCompleted || 0);
       }, 0);
 

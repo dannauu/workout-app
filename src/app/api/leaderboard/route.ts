@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '../auth/[...nextauth]/route';
 import connectDB from '@/lib/mongodb';
-import User from '@/models/User';
+import User, { IUser, IWorkoutDay } from '@/models/User';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
@@ -23,13 +23,13 @@ export async function GET(request: NextRequest) {
     }).select('userName currentWeight targetWeight workouts createdAt weightHistory');
 
     // Calculate progress for each user
-    const leaderboardData = users.map((user: any) => {
+    const leaderboardData = users.map((user: IUser) => {
       const totalWorkouts = user.workouts.length;
-      const totalSetsCompleted = user.workouts.reduce((total: number, workout: any) => {
+      const totalSetsCompleted = user.workouts.reduce((total: number, workout: IWorkoutDay) => {
         return total + (workout.totalSetsCompleted || 0);
       }, 0);
 
-      const totalSetsPlanned = user.workouts.reduce((total: number, workout: any) => {
+      const totalSetsPlanned = user.workouts.reduce((total: number, workout: IWorkoutDay) => {
         return total + (workout.totalSetsPlanned || 0);
       }, 0);
 
@@ -46,17 +46,17 @@ export async function GET(request: NextRequest) {
       // Starting weight = the very first weight they ever entered (never changes)
       const startingWeight = weightHistory.length > 0 
         ? weightHistory[0].weight  // First weight in history
-        : user.currentWeight; // Fallback if no history yet
+        : (user.currentWeight || 0); // Fallback if no history yet
       
       // Calculate weight difference from current history weight to target
-      const weightDifference = currentWeightFromHistory - user.targetWeight;
+      const weightDifference = (currentWeightFromHistory || 0) - (user.targetWeight || 0);
       const isLosingWeight = weightDifference > 0;
       
       // Calculate actual weight change from starting weight to current history weight
-      const actualWeightChange = currentWeightFromHistory - startingWeight;
+      const actualWeightChange = (currentWeightFromHistory || 0) - (startingWeight || 0);
       
       // Calculate total weight change needed from starting point to goal
-      const totalWeightChangeNeeded = startingWeight - user.targetWeight;
+      const totalWeightChangeNeeded = (startingWeight || 0) - (user.targetWeight || 0);
       
       // Calculate progress as percentage of journey completed
       let progressToGoal = 0;
@@ -81,7 +81,7 @@ export async function GET(request: NextRequest) {
       const averageWorkoutsPerWeek = totalWorkouts / weeksSinceJoining;
 
       // Find last workout
-      const sortedWorkouts = user.workouts.sort((a: any, b: any) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      const sortedWorkouts = user.workouts.sort((a: IWorkoutDay, b: IWorkoutDay) => new Date(b.date).getTime() - new Date(a.date).getTime());
       const lastWorkout = sortedWorkouts[0];
       
       // Calculate days since last workout

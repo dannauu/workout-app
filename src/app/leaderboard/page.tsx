@@ -54,7 +54,7 @@ export default function LeaderboardPage() {
   const router = useRouter();
   const [leaderboard, setLeaderboard] = useState<LeaderboardUser[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState('');
+  const [_error, setError] = useState('');
 
   // Redirect to sign up if not authenticated
   useEffect(() => {
@@ -131,12 +131,12 @@ export default function LeaderboardPage() {
     );
   }
 
-  if (error) {
+  if (_error) {
     return (
       <Container maxWidth="lg">
         <AppHeader title="Leaderboard"  />
         <Alert severity="error" sx={{ mb: 3 }}>
-          {error}
+          {_error}
         </Alert>
       </Container>
     );
@@ -326,7 +326,7 @@ export default function LeaderboardPage() {
             Ranked by weight progress and workout consistency
           </Typography>
 
-          {leaderboard.map((user, index) => (
+          {leaderboard.map((user) => (
             <Card 
               key={user.userName} 
               sx={{ 

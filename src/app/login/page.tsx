@@ -20,7 +20,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [_error, setError] = useState('');
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -73,9 +73,9 @@ export default function LoginPage() {
           Sign In
         </Typography>
 
-        {error && (
+        {_error && (
           <Alert severity="error" sx={{ mb: 2 }}>
-            {error}
+            {_error}
           </Alert>
         )}
 
@@ -121,7 +121,7 @@ export default function LoginPage() {
 
         <Box mt={2}>
           <Typography variant="body2">
-            Don't have an account?{' '}
+            Don&apos;t have an account?{' '}
             <Link href="/register" underline="hover">
               Create one here
             </Link>

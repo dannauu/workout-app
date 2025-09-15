@@ -4,7 +4,7 @@ import { authOptions } from '../auth/[...nextauth]/route';
 import connectDB from '@/lib/mongodb';
 import User from '@/models/User';
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const session = await getServerSession(authOptions);
 
@@ -61,7 +61,7 @@ export async function PUT(request: NextRequest) {
       });
       
       // Check if we already have an entry for today
-      const existingEntryIndex = user.weightHistory.findIndex((entry: any) => entry.date === today);
+      const existingEntryIndex = user.weightHistory.findIndex((entry: { date: string; weight: number }) => entry.date === today);
       
       if (existingEntryIndex !== -1) {
         // Update existing entry

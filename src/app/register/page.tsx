@@ -26,7 +26,7 @@ export default function RegisterPage() {
     targetWeight: ''
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [_error, setError] = useState('');
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,9 +114,9 @@ export default function RegisterPage() {
           Create Account
         </Typography>
 
-        {error && (
+        {_error && (
           <Alert severity="error" sx={{ mb: 2 }}>
-            {error}
+            {_error}
           </Alert>
         )}
 

@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import connectDB from '@/lib/mongodb';
-import User from '@/models/User';
+import User, { IWorkoutDay } from '@/models/User';
 import { getWorkoutTemplate, formatDate } from '@/utils/workoutUtils';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
-export async function GET(request: NextRequest) {
+export async function GET(_request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
     
@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
     const dayOfWeek = today.toLocaleDateString('en-US', { weekday: 'long' });
     
     // Get today's workout from user's workouts
-    let todayWorkout = user.workouts.find((workout: any) => workout.date === todayFormatted);
+    let todayWorkout = user.workouts.find((workout: IWorkoutDay) => workout.date === todayFormatted);
     
     // If workout exists but is missing title, add it
     if (todayWorkout && !todayWorkout.title) {
@@ -46,10 +46,10 @@ export async function GET(request: NextRequest) {
           date: todayFormatted,
           dayOfWeek,
           title: template.title,
-          exercises: template.exercises.map((exercise: any) => ({
+          exercises: template.exercises.map((exercise: { name: string; defaultSets: { reps: number; weight?: number }[] }) => ({
             name: exercise.name,
-            sets: exercise.defaultSets.map((set: any) => ({
-              setNumber: set.setNumber,
+            sets: exercise.defaultSets.map((set: { reps: number; weight?: number }, index: number) => ({
+              setNumber: index + 1,
               reps: set.reps,
               weight: undefined,
               completed: false
@@ -57,7 +57,7 @@ export async function GET(request: NextRequest) {
           })),
           completed: false,
           totalSetsCompleted: 0,
-          totalSetsPlanned: template.exercises.reduce((total: number, ex: any) => total + ex.defaultSets.length, 0)
+          totalSetsPlanned: template.exercises.reduce((total: number, ex: { defaultSets: { reps: number; weight?: number }[] }) => total + ex.defaultSets.length, 0)
         };
         
         user.workouts.push(newWorkout);
@@ -110,7 +110,7 @@ export async function PUT(request: NextRequest) {
       const todayFormatted = formatDate(today);
       
       // Find today's workout
-      const workoutIndex = user.workouts.findIndex((workout: any) => workout.date === todayFormatted);
+      const workoutIndex = user.workouts.findIndex((workout: IWorkoutDay) => workout.date === todayFormatted);
       
       if (workoutIndex === -1) {
         return NextResponse.json({ error: 'Workout not found' }, { status: 404 });
@@ -123,7 +123,7 @@ export async function PUT(request: NextRequest) {
       user.currentWeight = bodyWeight;
       
       // Add to weight history if not already recorded for today
-      const existingWeightEntry = user.weightHistory.find((entry: any) => entry.date === todayFormatted);
+      const existingWeightEntry = user.weightHistory.find((entry: { date: string; weight: number }) => entry.date === todayFormatted);
       if (!existingWeightEntry) {
         user.weightHistory.push({
           date: todayFormatted,
@@ -148,7 +148,7 @@ export async function PUT(request: NextRequest) {
     const todayFormatted = formatDate(today);
     
     // Find today's workout
-    const workoutIndex = user.workouts.findIndex((workout: any) => workout.date === todayFormatted);
+    const workoutIndex = user.workouts.findIndex((workout: IWorkoutDay) => workout.date === todayFormatted);
     
     if (workoutIndex === -1) {
       return NextResponse.json({ error: 'Workout not found' }, { status: 404 });
@@ -156,7 +156,7 @@ export async function PUT(request: NextRequest) {
 
     // Find the exercise and set
     const exerciseIndex = user.workouts[workoutIndex].exercises.findIndex(
-      (ex: any) => ex.name === exerciseName
+      (ex: { name: string; sets: { setNumber: number; completed: boolean }[] }) => ex.name === exerciseName
     );
     
     if (exerciseIndex === -1) {
@@ -164,7 +164,7 @@ export async function PUT(request: NextRequest) {
     }
 
     const setIndex = user.workouts[workoutIndex].exercises[exerciseIndex].sets.findIndex(
-      (set: any) => set.setNumber === setNumber
+      (set: { setNumber: number; completed: boolean }) => set.setNumber === setNumber
     );
     
     if (setIndex === -1) {
@@ -180,7 +180,7 @@ export async function PUT(request: NextRequest) {
 
     // Update total sets completed
     const totalCompleted = user.workouts[workoutIndex].exercises.reduce(
-      (total: number, ex: any) => total + ex.sets.filter((s: any) => s.completed).length, 0
+      (total: number, ex: { sets: { completed: boolean }[] }) => total + ex.sets.filter((s: { completed: boolean }) => s.completed).length, 0
     );
     user.workouts[workoutIndex].totalSetsCompleted = totalCompleted;
 
