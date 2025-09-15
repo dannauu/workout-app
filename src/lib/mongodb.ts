@@ -32,7 +32,7 @@ async function connectDB() {
       minPoolSize: 1, // Maintain at least 1 socket connection
       maxIdleTimeMS: 30000, // Close connections after 30 seconds of inactivity
       retryWrites: true,
-      w: 'majority'
+      w: 1 as const // Write concern: acknowledge writes
     };
 
     cached.promise = mongoose.connect(MONGODB_URI!, opts).then((mongoose) => {
