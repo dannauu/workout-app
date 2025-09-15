@@ -7,6 +7,17 @@
   # Disable secrets scanning since NextAuth embeds NEXTAUTH_URL in build output
   SECRETS_SCAN_ENABLED = "false"
 
+# Function configuration for better performance
+[functions]
+  directory = ".netlify/functions"
+  node_bundler = "esbuild"
+
+# Increase timeout for serverless functions
+[[functions]]
+  path = "/api/*"
+  included_files = ["src/**"]
+  timeout = 30
+
 # Headers for better performance
 [[headers]]
   for = "/_next/static/*"
